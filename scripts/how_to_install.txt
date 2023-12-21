@@ -1,0 +1,33 @@
+🚀 How to Install Drivers:
+
+1. **ADB Driver:**
+   - Download the ADB driver from the following link: [Universal ADB Driver](https://androidmtk.com/download-universal-adb-driver).
+   - Locate the downloaded installer and run it.
+   - Follow the on-screen instructions to install the ADB driver.
+   - This driver is essential for connecting your Android device to your computer for debugging and other development tasks.
+
+2. **Fastboot Driver:**
+   - Download the Fastboot driver from the following link: [Fastboot/ADB Drivers](https://www.flashtool.org/android/drivers-fastbootadb/).
+   - Locate the downloaded installer and run it.
+   - Follow the on-screen instructions to install the Fastboot driver.
+   - Fastboot is a tool that helps you flash images, recoveries, and other components on your Android device.
+
+3. **Google USB Driver:**
+   - Download the Google USB driver from the following link: [Google USB Driver](https://developer.android.com/studio/run/win-usb).
+   - Extract the contents of the downloaded ZIP file to a location on your computer.
+   - Open the "Device Manager" on your computer.
+   - Locate your Android device in the "Device Manager" (it might appear under "Other devices").
+   - Right-click on your Android device and choose "Update driver."
+   - Select "Browse my computer for drivers" and navigate to the extracted folder.
+   - Follow the on-screen instructions to install the Google USB driver.
+   - This driver is necessary for connecting Google Pixel and Nexus devices to your computer.
+
+4. **MediaTek USB VCOM Driver:**
+   - Download the MediaTek USB VCOM driver from the following link: [MediaTek USB VCOM Drivers](https://www.hovatek.com/forum/thread-16640.html).
+   - Locate the downloaded installer and run it.
+   - Follow the on-screen instructions to install the MediaTek USB VCOM driver.
+   - MediaTek drivers are essential for devices with MediaTek processors, including many Android smartphones.
+
+📌 **Note:**
+   - Ensure that you have the necessary permissions and administrative rights to install drivers on your computer.
+   - If you encounter any issues, refer to the documentation provided by the respective driver providers.
