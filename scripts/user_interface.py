@@ -1,6 +1,22 @@
 import os
 import time
 import subprocess
+from PyQt5.QtWidgets import (
+    QApplication,
+    QWidget,
+    QVBoxLayout,
+    QPushButton,
+    QLabel,
+    QDesktopWidget,
+    QGridLayout,
+    QMessageBox,
+    QPlainTextEdit,
+    QDialog,
+)
+from subprocess import Popen, PIPE
+import webbrowser
+from install_drivers import DriverInstallerUI
+
 
 class FirmwareInstallUI:
     def __init__(self):
@@ -17,23 +33,26 @@ class FirmwareInstallUI:
     def display_banner(self):
         # Add your ASCII art banner here
         banner = """
- _______  _______  _______  _______  _______
-(  ____ \(  ___  )(       )(  ____ \(  ____ \\
-| (    \/| (   ) || () () || (    \/| (    \/
-| (__    | (___) || || || || (__    | (_____
-|  __)   |  ___  || |(_)| ||  __)   (_____  )
-| (      | (   ) || |   | || (            ) |
-| (____/\| )   ( || )   ( || (____/\/\____) |
-(_______/|/     \||/     \|(_______/\_______)
-"""
+
+______ _           _     _    _ _                  _ 
+|  ___| |         | |   | |  | (_)                | |
+| |_  | | __ _ ___| |__ | |  | |_ ______ _ _ __ __| |
+|  _| | |/ _` / __| '_ \| |/\| | |_  / _` | '__/ _` |
+| |   | | (_| \__ \ | | \  /\  / |/ / (_| | | | (_| |
+\_|   |_|\__,_|___/_| |_|\/  \/|_/___\__,_|_|  \__,_|
+                                                     
+                                                     
+
+        """
         print(banner)
+
 
 def download_firmware_menu(ui):
     choices = {
         "1": "All Firmware Versions",
         "2": "Download Firmware",
         "3": "Install Firmware",
-        "4": "Go Back"
+        "4": "Go Back",
     }
 
     while True:
@@ -48,7 +67,6 @@ def download_firmware_menu(ui):
             ui.start()
             print("Displaying all firmware versions...")
             time.sleep(1)  # Add a delay for animation effect
-            ui.finish()
         elif choice == "2":
             ui.start()
             print("Downloading firmware...")
@@ -56,12 +74,10 @@ def download_firmware_menu(ui):
             # Construct the absolute path for install_firmware.py
             script_path = os.path.abspath(__file__)
             script_directory = os.path.dirname(script_path)
-            install_firmware_path = os.path.join(script_directory, "./scripts/install_firmware.py")
+            install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
 
             # Replace 'python' with the appropriate command to run the install_firmware.py script
-            subprocess.run(['python', install_firmware_path])
-
-            ui.finish()
+            subprocess.run(["python", install_firmware_path])
         elif choice == "3":
             ui.start()
             print("Installing firmware...")
@@ -69,16 +85,16 @@ def download_firmware_menu(ui):
             # Construct the absolute path for install_firmware.py
             script_path = os.path.abspath(__file__)
             script_directory = os.path.dirname(script_path)
-            install_firmware_path = os.path.join(script_directory, "./scripts/install_firmware.py")
+            install_firmware_path = os.path.join(script_directory, "install_firmware.py")
 
             # Replace 'python' with the appropriate command to run the install_firmware.py script
-            subprocess.run(['python', install_firmware_path])
-
+            subprocess.run(["python", install_firmware_path])
             ui.finish()
         elif choice == "4":
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 def main_menu():
     ui = FirmwareInstallUI()
@@ -90,7 +106,7 @@ def main_menu():
         "4": "Download Other Flashing Tools",
         "5": "Search for Firmware Version based on Phone Model",
         "6": "Select from a List of All Models Available",
-        "7": "Exit"
+        "7": "Exit",
     }
 
     while True:
@@ -102,31 +118,34 @@ def main_menu():
 
         if choice == "1":
             ui.start()
-            print("Installing drivers...")
-            time.sleep(1)  # Add a delay for animation effect
+
+            # Construct the absolute path for install_drivers.py
+            script_path = os.path.abspath(__file__)
+            script_directory = os.path.dirname(script_path)
+            install_drivers_path = os.path.join(script_directory, "install_drivers.py")
+
+            # Replace 'python' with the appropriate command to run the install_drivers.py script
+            subprocess.run(["python", install_drivers_path])
+
             ui.finish()
         elif choice == "2":
             ui.start()
             print("Detecting device...")
             time.sleep(1)  # Add a delay for animation effect
-            ui.finish()
         elif choice == "3":
             download_firmware_menu(ui)
         elif choice == "4":
             ui.start()
             print("Downloading other flashing tools...")
             time.sleep(1)  # Add a delay for animation effect
-            ui.finish()
         elif choice == "5":
             ui.start()
             print("Searching for firmware version based on phone model...")
             time.sleep(1)  # Add a delay for animation effect
-            ui.finish()
         elif choice == "6":
             ui.start()
             print("Selecting from a list of all models available...")
             time.sleep(1)  # Add a delay for animation effect
-            ui.finish()
         elif choice == "7":
             print("Exiting...")
             break
