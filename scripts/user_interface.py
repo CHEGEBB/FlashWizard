@@ -38,7 +38,7 @@ def download_firmware_menu(ui):
 
     while True:
         ui.display_banner()
-        print("\n\033[96mDownload Firmware Menu:\033[0m")
+        print("\033[96mDownload Firmware Menu:\033[0m")
         for key, value in sorted(choices.items()):
             print(f"\033[92m{key}. {value}\033[0m")
 
@@ -54,8 +54,9 @@ def download_firmware_menu(ui):
             print("Downloading firmware...")
 
             # Construct the absolute path for install_firmware.py
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-            install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
+            script_path = os.path.abspath(__file__)
+            script_directory = os.path.dirname(script_path)
+            install_firmware_path = os.path.join(script_directory, "./scripts/install_firmware.py")
 
             # Replace 'python' with the appropriate command to run the install_firmware.py script
             subprocess.run(['python', install_firmware_path])
@@ -66,8 +67,9 @@ def download_firmware_menu(ui):
             print("Installing firmware...")
 
             # Construct the absolute path for install_firmware.py
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-            install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
+            script_path = os.path.abspath(__file__)
+            script_directory = os.path.dirname(script_path)
+            install_firmware_path = os.path.join(script_directory, "./scripts/install_firmware.py")
 
             # Replace 'python' with the appropriate command to run the install_firmware.py script
             subprocess.run(['python', install_firmware_path])
