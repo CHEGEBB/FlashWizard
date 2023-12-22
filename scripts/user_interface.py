@@ -32,18 +32,16 @@ class FirmwareInstallUI:
 
     def display_banner(self):
         # Add your ASCII art banner here
-        banner = """
-
-______ _           _     _    _ _                  _ 
-|  ___| |         | |   | |  | (_)                | |
-| |_  | | __ _ ___| |__ | |  | |_ ______ _ _ __ __| |
-|  _| | |/ _` / __| '_ \| |/\| | |_  / _` | '__/ _` |
-| |   | | (_| \__ \ | | \  /\  / |/ / (_| | | | (_| |
-\_|   |_|\__,_|___/_| |_|\/  \/|_/___\__,_|_|  \__,_|
-                                                     
-                                                     
-
-        """
+        banner = r"""
+        _______  _______  _______  _______  _______
+       (  ____ \(  ___ )(  ____ )(  ____ \(  ____ )
+       | (    \/| (   ) || (    )|| (    \/| (    )|
+       | (__    | (___) || (____)|| (__    | (____)|
+       |  __)   |  ___  ||     __)|  __)   |     __)
+       | (      | (   ) || (\ (   | (      | (\ (
+       | (____/\| )   ( || ) \ \__| (____/\| ) \ \__
+       (_______/|/     \||/   \__/(_______/|/   \__/
+"""
         print(banner)
 
 
@@ -72,8 +70,7 @@ def download_firmware_menu(ui):
             print("Downloading firmware...")
 
             # Construct the absolute path for install_firmware.py
-            script_path = os.path.abspath(__file__)
-            script_directory = os.path.dirname(script_path)
+            script_directory = os.path.dirname(os.path.abspath(__file__))
             install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
 
             # Replace 'python' with the appropriate command to run the install_firmware.py script
@@ -83,9 +80,8 @@ def download_firmware_menu(ui):
             print("Installing firmware...")
 
             # Construct the absolute path for install_firmware.py
-            script_path = os.path.abspath(__file__)
-            script_directory = os.path.dirname(script_path)
-            install_firmware_path = os.path.join(script_directory, "install_firmware.py")
+            script_directory = os.path.dirname(os.path.abspath(__file__))
+            install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
 
             # Replace 'python' with the appropriate command to run the install_firmware.py script
             subprocess.run(["python", install_firmware_path])
@@ -118,20 +114,21 @@ def main_menu():
 
         if choice == "1":
             ui.start()
-
-            # Construct the absolute path for install_drivers.py
-            script_path = os.path.abspath(__file__)
-            script_directory = os.path.dirname(script_path)
-            install_drivers_path = os.path.join(script_directory, "install_drivers.py")
-
-            # Replace 'python' with the appropriate command to run the install_drivers.py script
-            subprocess.run(["python", install_drivers_path])
+            
+            # Run the driver installation logic
+            driver_ui = DriverInstallerUI()
+            driver_ui.install_drivers()
 
             ui.finish()
         elif choice == "2":
             ui.start()
             print("Detecting device...")
             time.sleep(1)  # Add a delay for animation effect
+
+            # Run detect_device.py script
+            subprocess.run(["python", os.path.join("scripts", "detect_device.py")])
+
+            ui.finish()
         elif choice == "3":
             download_firmware_menu(ui)
         elif choice == "4":
