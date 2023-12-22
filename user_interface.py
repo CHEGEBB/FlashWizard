@@ -1,6 +1,7 @@
 import os
 import time
 import subprocess
+from install_firmware import install_firmware  # Replace with the actual function name
 
 def start():
     print("Starting firmware installation...")
@@ -45,22 +46,15 @@ def download_firmware_menu():
             start()
             print("Downloading firmware...")
 
-            # Construct the absolute path for install_firmware.py
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-            install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
+            # Replace 'install_firmware' with the actual function name
+            install_firmware()
 
-            # Replace 'python' with the appropriate command to run the install_firmware.py script
-            subprocess.run(["python", install_firmware_path])
         elif choice == "3":
             start()
             print("Installing firmware...")
 
-            # Construct the absolute path for install_firmware.py
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-            install_firmware_path = os.path.join(script_directory, "scripts", "install_firmware.py")
-
-            # Replace 'python' with the appropriate command to run the install_firmware.py script
-            subprocess.run(["python", install_firmware_path])
+            # Replace 'install_firmware' with the actual function name
+            install_firmware()
             finish()
         elif choice == "4":
             break

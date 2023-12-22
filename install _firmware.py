@@ -86,10 +86,14 @@ def download_firmware(url, output_dir, output_filename):
         sys.exit(1)
 
 
+def install_firmware():
+    print("\nFlashing logic goes here.")
+
+
 def flash_firmware(model_directory, model):
     print(f"\nFlashing firmware for {model}")
     # Replace the following line with your actual flashing logic
-    print("Flashing logic goes here.")
+    install_firmware()
 
 
 def select_phone_brand():
@@ -147,22 +151,6 @@ def select_techno_model():
     else:
         print("Invalid choice. Please enter a number between 1 and 3.")
         select_techno_model()
-
-
-def download_and_flash_samsung_firmware(model):
-    # Example Samsung firmware download URL
-    samsung_firmware_url = "https://example.com/samsung/{}/firmware.zip".format(model)
-    model_directory = create_firmware_directory(model)
-    firmware_path = download_firmware(samsung_firmware_url, model_directory, "firmware.zip")
-    flash_firmware(model_directory, model)
-
-
-def download_and_flash_techno_firmware(model):
-    # Example Techno firmware download URL
-    techno_firmware_url = "https://www.hovatek.com/forum/forum-106.html".format(model)
-    model_directory = create_firmware_directory(model)
-    firmware_path = download_firmware(techno_firmware_url, model_directory, "firmware.zip")
-    flash_firmware(model_directory, model)
 
 
 def main():
