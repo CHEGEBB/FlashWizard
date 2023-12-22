@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bypass utility
 Small utility to disable bootrom protection(sla and daa)
 
@@ -42,3 +43,6 @@ pip install pyusb pyserial json5
 ## Credits
 - [@chaosmaster](https://github.com/chaosmaster)
 - [@xyzz](https://github.com/xyzz)
+=======
+# UNDER DEVELOPMENT
+>>>>>>> 1802443481e5ef7667f9a2b70e14bafc20b30079
