@@ -1,7 +1,0 @@
-{
-    "0x6261": {
-        "payload": "mt6261_payload.bin",
-        "var_1": 40,
-        "watchdog_address": 2684551168
-    }
-}
