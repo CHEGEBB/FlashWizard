@@ -4,7 +4,6 @@ import shutil
 import zipfile
 import webbrowser
 
-
 # Global vars
 unpack_dir = "updater_unpacked"
 zip_updater_script = "META-INF/com/google/android/updater-script"
@@ -87,24 +86,10 @@ def download_firmware(url, output_dir, output_filename):
         sys.exit(1)
 
 
-def install_firmware():
-    print("\nInstalling firmware...")  # Replace this line with your actual flashing logic
-
-
-def backup_firmware(backup_dir, updater_zip):
-    print("\nBacking up firmware...")  # Replace this line with your actual backup logic
-    # You can use the updater_zip and backup_dir variables in your backup logic
-
-
-def restore_firmware(backup_dir):
-    print("\nRestoring firmware...")  # Replace this line with your actual restore logic
-    # You can use the backup_dir variable in your restore logic
-
-
 def flash_firmware(model_directory, model):
     print(f"\nFlashing firmware for {model}")
     # Replace the following line with your actual flashing logic
-    install_firmware()
+    print("Flashing logic goes here.")
 
 
 def select_phone_brand():
@@ -165,29 +150,19 @@ def select_techno_model():
 
 
 def download_and_flash_samsung_firmware(model):
-    print(f"\nDownloading and flashing firmware for Samsung {model}")
-    # Replace the following lines with your actual Samsung firmware download and flashing logic
-    firmware_url = input(f"Enter the firmware download URL for Samsung {model}: ").strip()
-    firmware_directory = create_firmware_directory(model)
-    firmware_filename = f"samsung_{model}_firmware.zip"
-    firmware_path = download_firmware(firmware_url, firmware_directory, firmware_filename)
-    process_updater(firmware_path)
-    parse_firmware_partition_mapping()
-    sanity_check(firmware_directory)
-    flash_firmware(firmware_directory, model)
+    # Example Samsung firmware download URL
+    samsung_firmware_url = "https://example.com/samsung/{}/firmware.zip".format(model)
+    model_directory = create_firmware_directory(model)
+    firmware_path = download_firmware(samsung_firmware_url, model_directory, "firmware.zip")
+    flash_firmware(model_directory, model)
 
 
 def download_and_flash_techno_firmware(model):
-    print(f"\nDownloading and flashing firmware for Techno {model}")
-    # Replace the following lines with your actual Techno firmware download and flashing logic
-    firmware_url = input(f"Enter the firmware download URL for Techno {model}: ").strip()
-    firmware_directory = create_firmware_directory(model)
-    firmware_filename = f"techno_{model}_firmware.zip"
-    firmware_path = download_firmware(firmware_url, firmware_directory, firmware_filename)
-    process_updater(firmware_path)
-    parse_firmware_partition_mapping()
-    sanity_check(firmware_directory)
-    flash_firmware(firmware_directory, model)
+    # Example Techno firmware download URL
+    techno_firmware_url = "https://www.hovatek.com/forum/forum-106.html".format(model)
+    model_directory = create_firmware_directory(model)
+    firmware_path = download_firmware(techno_firmware_url, model_directory, "firmware.zip")
+    flash_firmware(model_directory, model)
 
 
 def main():
@@ -209,13 +184,14 @@ def main():
         elif choice == '2':
             backup_dir = input("Enter backup directory: ").strip()
             updater_zip = input("Enter updater-zip file path: ").strip()
-            backup_firmware(backup_dir, updater_zip)
+            do_backup(backup_dir, updater_zip)
         elif choice == '3':
             backup_dir = input("Enter backup directory: ").strip()
-            restore_firmware(backup_dir)
+            updater_zip = input("Enter updater-zip file path: ").strip()
+            do_restore(backup_dir)
         elif choice == '4':
             url = input("Enter firmware download URL: ").strip()
-            download_firmware_page(url)
+            select_phone_brand()
         elif choice == '5':
             select_phone_brand()
         elif choice == '6':
